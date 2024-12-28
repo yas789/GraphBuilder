@@ -7,8 +7,16 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  background-color: rgba(0, 0, 0, 0.928);
 }
+.container {
 
+  background-color: #cdcdcd;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+
+}
 h1 {
   margin-top: 0;
   font-size: 22px;
@@ -64,12 +72,12 @@ body {
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 44px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 44px;
 }
 
 .board-row:after {
