@@ -1,57 +1,42 @@
 import './App.css';
 import { useState } from 'react';
-function Square({value}) {
-  const [values , setValue] = useState(null);
-  function onclick (){
-    setValue(value);
-    console.log(`Square clicked with value: ${value}`);
-  }
+function Square({value , onSquareClick}) {
+  return <button className = "square" onClick={onSquareClick} > {value}</button>
+}
 
-  return <button className = "square" onClick={onclick} > {values}</button>
-}
-function Reset(){
-  function reset(){
-    console.log('Reset button clicked');
-  }
-  return <button classname = "button" onClick={reset}> </button>
-}
 
 
 export default function Board(){
-  const[bools , setBools]  = useState(true);
-  const [value , setValue] = useState(null);
-  function handleClick() {
-    if(bools){
-      setValue('O');
-      setBools(false);
-    }
-    else{
-      setValue('X');
-      setBools(true);
-    }
+  const[squares, setSquares] = useState(Array(9).fill(null));
+
+  function handleclick(i){
+    const newSquares = squares.slice();
+    newSquares[i] = 'X';
+    setSquares(newSquares);
+
   }
+
+
   return (
-<div className = "container" onClick={handleClick}>
+<div className = "container">
     <div className = "board-row" >
-      <Square onClick={handleClick} value={value} />
-      <Square onClick={handleClick} value={value}/>
-      <Square onClick={handleClick} value={value}/>
+      <Square value={squares[0]} onSquareClick={() => handleclick(0)}/>
+      <Square value={squares[1]} onSquareClick={() => handleclick(1)}/>
+      <Square value={squares[2]} onSquareClick={() => handleclick(2)}/>
     </div>
     <div className = "board-row">
-    <Square onClick={handleClick} value={value} />
-    <Square onClick={handleClick} value={value} />
-    <Square onClick={handleClick} value={value} />
+    <Square value={squares[3]} onSquareClick={() => handleclick(3)}/>
+    <Square value={squares[4]} onSquareClick={() => handleclick(4)}/>
+    <Square value={squares[5]} onSquareClick={() => handleclick(5)}/>
     </div>
     <div className = "board-row">
-    <Square onClick={handleClick} value={value} />
-    <Square onClick={handleClick} value={value} />
-    <Square onClick={handleClick} value={value} />
-    </div>
-    <div className = "reset">
-    <Reset/>
+    <Square value={squares[6]} onSquareClick={() => handleclick(6)}/>
+    <Square value={squares[7]} onSquareClick={() => handleclick(7)}/>
+    <Square value={squares[8]} onSquareClick={() => handleclick(8)}/>
     </div>
 
 </div>
   )
 }
+
 
